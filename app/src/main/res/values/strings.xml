@@ -4,7 +4,7 @@
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
     <string name="action_about">About</string>
 
-    <string name="choose_gender">Choose your Gender?</string>
+    <string name="choose_gender">Choose your Gender</string>
     <string name="male">MALE</string>
     <string name="female">FEMALE</string>
     <string name="start_body_analysis">START BODY ANALYSIS</string>

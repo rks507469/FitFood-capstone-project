@@ -46,6 +46,7 @@
             android:layout_width="119dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/rounded_button"
             android:onClick="calculateClk"
             android:text="Discover" />
 

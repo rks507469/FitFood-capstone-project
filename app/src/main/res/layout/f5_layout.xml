@@ -25,7 +25,6 @@
             android:shadowRadius="5"
             android:text="NEW START GO!"
             android:textAllCaps="true"
-            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginStart="10dp" />
