@@ -1,5 +1,7 @@
 package ahmux.nutritionpoint;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,8 +42,18 @@ public class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Viewholder
         holder.fats.setText(model.getFat());
         holder.protein.setText(model.getProtein());
         // holder.recipeImage.setImageURI((URI)model.getRecipeImg());
-        // Picasso.get().load((model.getRecipeImg())).into(holder.recipeImage);
+        Picasso.get().load(("https://community.tm/attachments/thumb-060-batman-arkham-knight-1-1-jpg.15883/")).into(holder.recipeImage);
+        holder.itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                Uri uri= Uri.parse(model.getRecipeImg());
+                Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
+
 
 
     @Override

@@ -47,7 +47,6 @@
         <activity
             android:name=".discoverRecipe"
             android:parentActivityName=".MainActivity"></activity>
-
     </application>
 
 </manifest>
