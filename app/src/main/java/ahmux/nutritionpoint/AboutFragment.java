@@ -25,7 +25,7 @@ public class AboutFragment extends Fragment {
             public void onClick(View view) {
                 try {
                     Intent fbIntent = new Intent(Intent.ACTION_VIEW);
-                    fbIntent.setData(Uri.parse("https://www.facebook.com/supportnutritionpoit"));
+                    fbIntent.setData(Uri.parse("https://m.facebook.com/profile.php?id=100003261236907&_rdr"));
                     startActivity(fbIntent);
                 } catch (Exception e) {}
             }

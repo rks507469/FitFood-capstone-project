@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:text="NUTRITION POINT"
+            android:text="FitFood"
             android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
             android:gravity="center"
-            android:text="Through excellence in nutrition research and practice, Nutrition Point enhance scientific knowledge and quality of life"
+            android:text="Through excellence in nutrition research and practice, FitFood enhances scientific knowledge and quality of life."
             android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 

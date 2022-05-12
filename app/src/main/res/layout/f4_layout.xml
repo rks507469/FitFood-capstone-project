@@ -176,7 +176,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="BODY WATER analysis:"
+                            android:text="Water Intake Analysis:"
                             android:textColor="@android:color/black"
                             android:textSize="18sp" />
 
@@ -236,7 +236,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:text="Calories analysis:"
+                            android:text="Calories Analysis:"
                             android:textColor="@android:color/black"
                             android:textSize="18sp" />
 
@@ -272,25 +272,14 @@
 
             </FrameLayout>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             <Button
                 android:id="@+id/okBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button"/>
-
+                android:text="Home"
+                android:textColor="@color/colorWhite"
+                android:layout_marginLeft="165dp"
+                android:background="@drawable/rounded_button"/>
         </LinearLayout>
     </ScrollView>
 
