@@ -1,4 +1,4 @@
-# Nutrition Point Application
+# FitFood Application
 ###### Android App to manage your Diet Plans,calculate calories and Healthy recipes 
 
 
