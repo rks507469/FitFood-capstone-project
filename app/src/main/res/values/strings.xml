@@ -32,4 +32,5 @@
     <string name="weight">Weight</string>
     <string name="height">Height</string>
     <string name="analyze_data">Analyze Data</string>
+    <string name="imageview_for_recipes">ImageView for Recipes</string>
 </resources>

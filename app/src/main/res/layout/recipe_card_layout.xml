@@ -6,11 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         app:cardBackgroundColor="@color/colorWhite"
-        app:cardCornerRadius="50dp"
-        android:layout_marginLeft="50dp"
+        app:cardCornerRadius="24dp"
         app:cardElevation="50dp">
 
         <LinearLayout
@@ -22,56 +22,68 @@
                 android:id="@+id/RecipeImage"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                />
+                android:contentDescription="@string/imageview_for_recipes"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/RecipeName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxEms="10"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:fontFamily="sans-serif-black"
+                android:scrollHorizontally="true"
                 android:text="Recipe"
-                android:textAlignment="center"
                 android:textColor="#1E1E1E"
-                android:textSize="30sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/calorie"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
+                android:layout_gravity="center"
                 android:layout_margin="10dp"
+                android:scrollHorizontally="true"
                 android:text="Calorie"
-                android:textSize="20sp"
+                android:textAlignment="center"
                 android:textColor="#1E1E1E"
-                />
+                android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/servings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="servings"
-                android:layout_gravity="center_vertical"
-                ></TextView>
+                android:layout_gravity="center"
+                android:scrollHorizontally="true"
+                android:text="servings" />
+
             <TextView
                 android:id="@+id/mealtype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Meal Type"
-                ></TextView>
+                android:layout_gravity="center"
+                android:scrollHorizontally="true"
+                android:text="Meal Type" />
+
             <TextView
                 android:id="@+id/protein"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Protein">
+                android:layout_gravity="center"
+                android:scrollHorizontally="true"
+                android:text="Protein" />
 
-            </TextView>
             <TextView
                 android:id="@+id/fats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Fats"></TextView>
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:scrollHorizontally="true"
+                android:text="Fats" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
