@@ -238,7 +238,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(RemindersIntent);
 
         } else if (id == R.id.nav_Recipes) {
-
+            Intent recipe= new Intent(this,discoverRecipe.class);
+            startActivity(recipe);
         } else if (id == R.id.nav_calculate) {
             Intent ApiIntent = new Intent(this, ApiActivity.class);
             startActivity(ApiIntent);

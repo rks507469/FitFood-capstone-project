@@ -44,6 +44,9 @@
         <activity
             android:name=".ApiActivity"
             android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".discoverRecipe"
+            android:parentActivityName=".MainActivity"></activity>
 
     </application>
 

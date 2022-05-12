@@ -28,6 +28,7 @@
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/activity_api.xml" value="0.4" />
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/activity_reminders.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/content_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/discover_recipe_activity.xml" value="0.2734375" />
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/f1_layout.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/f2_layout.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/f3_layout.xml" value="0.22826086956521738" />
@@ -35,6 +36,7 @@
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/f5_layout.xml" value="0.2" />
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/fragment_about.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/nav_header_main.xml" value="0.2056159420289855" />
+        <entry key="..\:/Users/Tyson/AndroidStudioProjects/hope/app/src/main/res/layout/recipe_card_layout.xml" value="0.13297872340425532" />
       </map>
     </option>
   </component>
