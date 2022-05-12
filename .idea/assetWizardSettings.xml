@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_menu_calculate" />
-                            <entry key="sourceFile" value="C:\Users\King Ahmux" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_female" />
+                            <entry key="sourceFile" value="C:\Users\Aslam\Downloads\undraw_female_avatar_w3jk.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -5,31 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutFragment"
-    android:background="@color/colorAccent">
+    android:background="@color/colorWhite">
 
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="207dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="140dp"
-        android:src="@drawable/ic_menu_facebook"
+        android:layout_marginBottom="207dp"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:src="@drawable/ic_menu_facebook"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="140dp" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/imageView7"
+        android:layout_alignParentEnd="true"
         android:layout_marginEnd="140dp"
-        android:src="@drawable/ic_menu_twitter"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:src="@drawable/ic_menu_twitter" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_undraw_workout_gcgu" />
 
         <TextView
             android:id="@+id/textView15"
@@ -52,7 +54,7 @@
             android:layout_margin="5dp"
             android:gravity="center"
             android:text="NUTRITION POINT"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -63,7 +65,7 @@
             android:gravity="fill_vertical|center_horizontal"
             android:text="Eat Clean - Stay Positive"
             android:textAllCaps="true"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 
         <TextView
@@ -73,7 +75,7 @@
             android:layout_margin="25dp"
             android:gravity="center"
             android:text="Through excellence in nutrition research and practice, Nutrition Point enhance scientific knowledge and quality of life"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -92,7 +94,7 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Nutrition Point developed by Ahmad Hussein"
+            android:text="FitFood developed by Team 8"
             android:textAllCaps="true"
             android:textStyle="bold" />
 
@@ -103,7 +105,7 @@
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Ahmux.freelander@gmail.com"
+            android:text="rks507469@gmail.com, siinganurag786@gmail.com"
             android:textAllCaps="false"
             android:textStyle="bold" />
     </LinearLayout>

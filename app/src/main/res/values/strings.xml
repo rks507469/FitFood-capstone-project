@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Nutrition Point</string>
+    <string name="app_name">FitFood</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
     <string name="action_about">About</string>

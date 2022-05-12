@@ -21,7 +21,7 @@
             android:gravity="center"
             android:text="@string/start_body_analysis"
             android:textAllCaps="true"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
             android:textStyle="bold"
             app:fontFamily="sans-serif" />
@@ -48,17 +48,17 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <Button
-                    android:id="@+id/femaleBtn"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:src="@drawable/ic_female"
+                    android:id="@+id/femaleBtn"
+                    android:clickable="true"
                     android:layout_gravity="center"
-                    android:background="@drawable/animation_button"
-                    android:text="@string/female"
-                    android:textSize="@dimen/female"
-                    android:textStyle="bold"
                     android:elevation="10dp"
-                    android:translationZ="10dp"/>
+                    android:translationZ="10dp"
+                    android:outlineSpotShadowColor="@color/colorPrimary"
+                    />
             </FrameLayout>
 
             <FrameLayout
@@ -66,18 +66,17 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
-                <Button
-                    android:id="@+id/maleBtn"
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:src="@drawable/ic_male"
+                    android:id="@+id/maleBtn"
+                    android:clickable="true"
                     android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/animation_button"
-                    android:text="@string/male"
-                    android:textSize="@dimen/male"
-                    android:textStyle="bold"
                     android:elevation="10dp"
-                    android:translationZ="10dp"/>
+                    android:translationZ="10dp"
+                    android:outlineSpotShadowColor="@color/colorPrimary"
+                    />
             </FrameLayout>
 
         </LinearLayout>

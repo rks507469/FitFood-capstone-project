@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     android:clickable="true"
     android:focusable="true">
@@ -24,18 +25,32 @@
             android:shadowRadius="5"
             android:text="NEW START GO!"
             android:textAllCaps="true"
-            android:textColor="@android:color/background_light"
+            android:textColor="@color/colorPrimary"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginStart="10dp" />
+
+<!--        <Button-->
+<!--            android:id="@+id/showBtn"-->
+<!--            style="@style/Widget.AppCompat.Button.Colored"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:text="@string/show_analysis" />-->
 
         <Button
             android:id="@+id/showBtn"
-            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="@string/show_analysis" />
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="@string/show_analysis"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:cornerRadius="100dp"
+            app:rippleColor="@android:color/holo_green_light" />
 
         <Button
             android:id="@+id/clearBtn"

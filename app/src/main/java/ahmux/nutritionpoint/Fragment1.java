@@ -1,21 +1,21 @@
 package ahmux.nutritionpoint;
 
 
-import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Fragment1 extends Fragment implements View.OnClickListener {
 
-    Button b1, b2;
+    CircleImageView b1, b2;
     TextView tv1,tv2;
     View view;
     FragmentsCommunicator fc;
@@ -32,12 +32,12 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         tv1.setTypeface(tf);
         tv2.setTypeface(tf);
 
-        b1 = (Button) view.findViewById(R.id.maleBtn);
-        b2 = (Button) view.findViewById(R.id.femaleBtn);
+        b1 =  view.findViewById(R.id.maleBtn);
+        b2 =  view.findViewById(R.id.femaleBtn);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
-        b1.setTypeface(tf);
-        b2.setTypeface(tf);
+//        b1.setTypeface(tf);
+//        b2.setTypeface(tf);
 
         return view;
     }

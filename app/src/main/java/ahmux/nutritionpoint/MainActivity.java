@@ -1,36 +1,34 @@
 package ahmux.nutritionpoint;
 
 /* ######################################## */
-/*  Nutrition Point App developed by Ahmux  */
-/* ##### Ahmux.freelander@gmail.com ######  */
+/*  Fit Food App developed by Team 8  */
+/* ##### rks507469@gmail.com, siinganurag786@gmail.com ######  */
 /* ######################################## */
 
 import android.app.Activity;
+import androidx.fragment.app.Fragment;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.core.view.GravityCompat;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity
 
         // Loading Font Face
         Typeface tf = Typeface.createFromAsset(getAssets(), fontPath);
-        tv1.setTypeface(tf);
+        //tv1.setTypeface(tf);
 
         doubleBackToast = Toast.makeText(this,
                 R.string.doubleBackToast, Toast.LENGTH_LONG);
@@ -139,8 +137,8 @@ public class MainActivity extends AppCompatActivity
     }
     //Fragments loading method
     private void loadFragment(Fragment f, int layoutId) {
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+        androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
+        androidx.fragment.app.FragmentTransaction ft = fm.beginTransaction();
 
         ft.replace(layoutId, f);
         ft.addToBackStack(null);  // press back to go to previous fragment
@@ -158,8 +156,8 @@ public class MainActivity extends AppCompatActivity
         String weight = sharedPreferences.getString("weight", "N/A");
         String height = sharedPreferences.getString("height", "N/A");
         //choose start fraagment or End!
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+        androidx.fragment.app.FragmentManager fm = getSupportFragmentManager();
+        androidx.fragment.app.FragmentTransaction ft = fm.beginTransaction();
         if (age.matches("N/A")) {
             ft.replace(R.id.mainFrameLayout, new Fragment1());
             ft.commit();
@@ -208,20 +206,20 @@ public class MainActivity extends AppCompatActivity
             loadFragment(new AboutFragment(), R.id.fullparentFramelayout);
             return true;
         }
-        else if (id == R.id.action_language){
-            String langPref = "Language";
-            SharedPreferences sharedPreferences = getSharedPreferences("SettingsData", Activity.MODE_PRIVATE);
-            String language = sharedPreferences.getString(langPref, "en");
-            if(language.matches("ar")){
-                changeLang("en");
-            }else{
-                changeLang("ar");
-            }
-            Intent refresh = new Intent(this, MainActivity.class);
-            refresh.setFlags(refresh.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY); // Adds the FLAG_ACTIVITY_NO_HISTORY flag
-            startActivity(refresh);
-            finish();
-        }
+//        else if (id == R.id.action_language){
+//            String langPref = "Language";
+//            SharedPreferences sharedPreferences = getSharedPreferences("SettingsData", Activity.MODE_PRIVATE);
+//            String language = sharedPreferences.getString(langPref, "en");
+//            if(language.matches("ar")){
+//                changeLang("en");
+//            }else{
+//                changeLang("ar");
+//            }
+//            Intent refresh = new Intent(this, MainActivity.class);
+//            refresh.setFlags(refresh.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY); // Adds the FLAG_ACTIVITY_NO_HISTORY flag
+//            startActivity(refresh);
+//            finish();
+//        }
 
         return super.onOptionsItemSelected(item);
     }
