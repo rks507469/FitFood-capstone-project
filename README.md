@@ -1,4 +1,4 @@
-# Nutrition Point Application
+# FitFood Application
 ###### Android App to manage your Diet Plans,calculate calories and Healthy recipes 
 
 
@@ -41,18 +41,6 @@ When user try to exit the App, the confirmation  toast will be displayed on scre
 
 Nutrition Point content Vertically Scrolling. make the content vertically scrollable.
 
-
-##
-
-#### Arabic Language Support
-Nutrition Point supports to help Arabic users
-
-##
-
-##### ScreenShots
-
-![screenshot1](https://user-images.githubusercontent.com/8544010/45600398-74f65d00-b9fc-11e8-9ee6-c8374463714e.png)![screenshot2](https://user-images.githubusercontent.com/8544010/45600400-7b84d480-b9fc-11e8-8965-effccb1a7694.png)![screenshot3](https://user-images.githubusercontent.com/8544010/45600401-7e7fc500-b9fc-11e8-80cb-fb337d4c3bcd.png)![screenshot4](https://user-images.githubusercontent.com/8544010/45600403-80e21f00-b9fc-11e8-8b49-df85f874e726.png)
-![screenshot6](https://user-images.githubusercontent.com/8544010/45600510-1b8f2d80-b9fe-11e8-96bb-23f8708d6ef9.png)![screenshot5](https://user-images.githubusercontent.com/8544010/45600405-8b041d80-b9fc-11e8-9dfe-c483e46e0924.png)
 
 
 
