@@ -42,7 +42,7 @@ public class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Viewholder
         holder.fats.setText(model.getFat());
         holder.protein.setText(model.getProtein());
         // holder.recipeImage.setImageURI((URI)model.getRecipeImg());
-        Picasso.get().load(("https://community.tm/attachments/thumb-060-batman-arkham-knight-1-1-jpg.15883/")).into(holder.recipeImage);
+        Picasso.get().load((model.getRecipeImg())).into(holder.recipeImage);
         holder.itemView.setOnClickListener(new View.OnClickListener()
         {
             @Override

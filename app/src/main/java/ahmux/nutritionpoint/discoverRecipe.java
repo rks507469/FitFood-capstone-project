@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public class discoverRecipe extends AppCompatActivity {
     private static ArrayList<recipe_card_model> RecipeModelArrayList;
     private static RecyclerView courseRV;
-    private static TextView tv;
+    private static EditText et;
     Handler mainHandler= new Handler();
 
     String food,meal="";
@@ -34,12 +35,14 @@ public class discoverRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discover_recipe_activity);
         courseRV = findViewById(R.id.idRVCourse);
+        et=findViewById(R.id.search);
         Button button = findViewById(R.id.getdata);
         RecipeModelArrayList = new ArrayList<>();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getApplicationContext(),"Heyyyy",Toast.LENGTH_LONG).show();
+                food=et.getText().toString();
                 new Fetch().start();
                 recipeAdapter ra = new recipeAdapter(getApplicationContext(),RecipeModelArrayList);
                 courseRV.setAdapter(ra);
@@ -57,8 +60,6 @@ public class discoverRecipe extends AppCompatActivity {
             String allStrings="";
 
             try{
-
-                food="milk cake";
                 URL myUrl = new URL("https://api.edamam.com/api/recipes/v2?type=public&app_id=bee89654&app_key=5ab4040cc985ff59387ab89f5d297b8e&q="+food);
                 HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
                 InputStream streamReader = connection.getInputStream();
@@ -88,7 +89,10 @@ public class discoverRecipe extends AppCompatActivity {
                         String protein_q= Double.toString(protein.getDouble("quantity"));
                         String portion=Integer.toString(recipe.getInt("yield"));
                         String recipeName=recipe.getString("label");
-                        RecipeModelArrayList.add(new recipe_card_model(recipeName, recipeimg,calories,portion,meal,fat_q,protein_q));
+                        JSONObject imgs=recipe.getJSONObject("images");
+                        JSONObject thumbnail=imgs.getJSONObject("THUMBNAIL");
+                        String imu=thumbnail.getString("url");
+                        RecipeModelArrayList.add(new recipe_card_model(recipeName, imu,calories,portion,meal,fat_q,protein_q));
                         //(String recipeName, String recipeImg, String calories, String serving, String mealType, String fat, String protein)
                     }
 //                    System.out.println("calories = "+calories);
