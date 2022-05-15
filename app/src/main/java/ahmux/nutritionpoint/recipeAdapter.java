@@ -47,7 +47,7 @@ public class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Viewholder
         {
             @Override
             public void onClick(View view) {
-                Uri uri= Uri.parse(model.getRecipeImg());
+                Uri uri= Uri.parse(model.getRecipeurl());
                 Intent intent= new Intent(Intent.ACTION_VIEW,uri);
                 view.getContext().startActivity(intent);
             }

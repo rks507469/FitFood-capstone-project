@@ -36,6 +36,7 @@ public class discoverRecipe extends AppCompatActivity {
         setContentView(R.layout.discover_recipe_activity);
         courseRV = findViewById(R.id.idRVCourse);
         et=findViewById(R.id.search);
+
         Button button = findViewById(R.id.getdata);
         RecipeModelArrayList = new ArrayList<>();
         button.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,7 @@ public class discoverRecipe extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(),"Heyyyy",Toast.LENGTH_LONG).show();
                 food=et.getText().toString();
                 new Fetch().start();
+                et.getText().clear();
                 recipeAdapter ra = new recipeAdapter(getApplicationContext(),RecipeModelArrayList);
                 courseRV.setAdapter(ra);
                 courseRV.setLayoutManager(new LinearLayoutManager(discoverRecipe.this));
@@ -81,7 +83,7 @@ public class discoverRecipe extends AppCompatActivity {
                         String calories=Double.toString(recipe.getDouble("calories"));
                         JSONArray mealType= (JSONArray) recipe.get("mealType");
                         String meal=mealType.getString(0);
-                        String recipeimg =recipe.getString("url");
+                        String recipeurl =recipe.getString("url");
                         JSONObject totalNutrients=recipe.getJSONObject("totalNutrients");
                         JSONObject fat=totalNutrients.getJSONObject("FAT");
                         String fat_q= Double.toString(fat.getDouble("quantity"));
@@ -92,7 +94,7 @@ public class discoverRecipe extends AppCompatActivity {
                         JSONObject imgs=recipe.getJSONObject("images");
                         JSONObject thumbnail=imgs.getJSONObject("THUMBNAIL");
                         String imu=thumbnail.getString("url");
-                        RecipeModelArrayList.add(new recipe_card_model(recipeName, imu,calories,portion,meal,fat_q,protein_q));
+                        RecipeModelArrayList.add(new recipe_card_model(recipeName, imu,calories,portion,meal,fat_q,protein_q,recipeurl));
                         //(String recipeName, String recipeImg, String calories, String serving, String mealType, String fat, String protein)
                     }
 //                    System.out.println("calories = "+calories);

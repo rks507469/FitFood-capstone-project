@@ -7,9 +7,10 @@ public class recipe_card_model {
     private String serving;
     private String mealType;
     private String fat;
+    private String recipeurl;
     private String protein;
 
-    public recipe_card_model(String recipeName, String recipeImg, String calories, String serving, String mealType, String fat, String protein) {
+    public recipe_card_model(String recipeName, String recipeImg, String calories, String serving, String mealType, String fat, String protein,String recipeurl) {
         this.recipeName = recipeName;
         this.recipeImg = recipeImg;
         this.calories = calories;
@@ -17,8 +18,15 @@ public class recipe_card_model {
         this.mealType = mealType;
         this.fat = fat;
         this.protein = protein;
+        this.recipeurl=recipeurl;
     }
-
+    public String getRecipeurl(){
+        return recipeurl;
+    }
+    public void setRecipeurl(String recipeurl)
+    {
+        this.recipeurl=recipeurl;
+    }
     public String getRecipeName() {
         return recipeName;
     }
