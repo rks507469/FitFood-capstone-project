@@ -1,17 +1,20 @@
 package ahmux.nutritionpoint;
 
 /* ######################################## */
-/*  Nutrition Point App developed by Ahmux  */
-/* ##### Ahmux.freelander@gmail.com ######  */
+/*  Fit Food  */
+/* ##### rks507469@gmail.com ######  */
 /* ######################################## */
 
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +34,9 @@ public class RemindersActivity extends AppCompatActivity implements View.OnClick
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.reminders_title);
+
+        // Creating a notification channel on oreo and above
+        createNotificationChannel();
 
         SharedPreferences sharedPreferences = getSharedPreferences("SettingsData", Activity.MODE_PRIVATE);
 
@@ -60,7 +66,7 @@ public class RemindersActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         SharedPreferences sharedPreferences = getSharedPreferences("SettingsData", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        int delay = sharedPreferences.getInt("water_delay", 300);
+        long delay = sharedPreferences.getInt("water_delay", 300);
 
 
         if (view.getId() == R.id.min15Btn || delay == 15){
@@ -104,11 +110,12 @@ public class RemindersActivity extends AppCompatActivity implements View.OnClick
             b5.setTextColor(Color.WHITE);
         }
         else if (view.getId() == R.id.startBtn){
-            AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-            Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),delay*60*1000, pendingIntent);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(this, AlarmReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), delay*60*1000, pendingIntent);
             editor.putString("water_reminder", "true");
+            Toast.makeText(this, "Water Reminder Started", Toast.LENGTH_SHORT).show();
         }
         else if (view.getId() == R.id.stopBtn){
             editor.putString("water_reminder", "false");
@@ -117,6 +124,19 @@ public class RemindersActivity extends AppCompatActivity implements View.OnClick
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
             alarmManager.cancel(pendingIntent);
             Toast.makeText(this, "Water Reminders Stopped", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void createNotificationChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "FitFoodWaterReminderChannel";
+            String description = "Channel for Water Reminder";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("FitFood", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
     }
 }
