@@ -1,0 +1,121 @@
+Index: app/src/main/java/ahmux/nutritionpoint/discoverRecipe.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ahmux.nutritionpoint;\r\n\r\nimport android.os.Bundle;\r\nimport android.os.Handler;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport org.json.JSONArray;\r\nimport org.json.JSONObject;\r\n\r\nimport java.io.BufferedReader;\r\nimport java.io.InputStream;\r\nimport java.io.InputStreamReader;\r\nimport java.net.HttpURLConnection;\r\nimport java.net.URL;\r\nimport java.util.ArrayList;\r\n\r\npublic class discoverRecipe extends AppCompatActivity {\r\n    private static ArrayList<recipe_card_model> RecipeModelArrayList;\r\n    private static RecyclerView courseRV;\r\n    private static EditText et;\r\n    Handler mainHandler= new Handler();\r\n\r\n    String food,meal=\"\";\r\n    String calorie=\"\";\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.discover_recipe_activity);\r\n        courseRV = findViewById(R.id.idRVCourse);\r\n        et=findViewById(R.id.search);\r\n\r\n        Button button = findViewById(R.id.getdata);\r\n        RecipeModelArrayList = new ArrayList<>();\r\n        button.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                //Toast.makeText(getApplicationContext(),\"Heyyyy\",Toast.LENGTH_LONG).show();\r\n                food=et.getText().toString();\r\n                new Fetch().start();\r\n                et.getText().clear();\r\n                recipeAdapter ra = new recipeAdapter(getApplicationContext(),RecipeModelArrayList);\r\n                courseRV.setAdapter(ra);\r\n                courseRV.setLayoutManager(new LinearLayoutManager(discoverRecipe.this));\r\n\r\n            }\r\n        });\r\n\r\n\r\n    }\r\n    class Fetch extends Thread{\r\n        @Override\r\n        public void run() {\r\n\r\n            String allStrings=\"\";\r\n\r\n            try{\r\n                URL myUrl = new URL(\"https://api.edamam.com/api/recipes/v2?type=public&app_id=bee89654&app_key=5ab4040cc985ff59387ab89f5d297b8e&q=\"+food);\r\n                HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();\r\n                InputStream streamReader = connection.getInputStream();\r\n                BufferedReader reader = new BufferedReader(new InputStreamReader(streamReader));\r\n                String inputLine;\r\n                //StringBuilder stringBuilder = new StringBuilder();\r\n                //Check if the line we are reading is not null\r\n\r\n                while((inputLine = reader.readLine()) != null){\r\n                    allStrings=allStrings+inputLine;\r\n                }\r\n                if(!allStrings.isEmpty()) {\r\n\r\n                    JSONObject jsonObject = new JSONObject(allStrings);\r\n                    JSONArray h = (JSONArray) jsonObject.get(\"hits\");\r\n                    for(int i=0;i<h.length();i++) {\r\n                        JSONObject rec=h.getJSONObject(i);\r\n                        JSONObject recipe = rec.getJSONObject(\"recipe\");\r\n                        String calories=Double.toString(recipe.getDouble(\"calories\"));\r\n                        JSONArray mealType= (JSONArray) recipe.get(\"mealType\");\r\n                        String meal=mealType.getString(0);\r\n                        String recipeurl =recipe.getString(\"url\");\r\n                        JSONObject totalNutrients=recipe.getJSONObject(\"totalNutrients\");\r\n                        JSONObject fat=totalNutrients.getJSONObject(\"FAT\");\r\n                        String fat_q= Double.toString(fat.getDouble(\"quantity\"));\r\n                        JSONObject protein=totalNutrients.getJSONObject(\"PROCNT\");\r\n                        String protein_q= Double.toString(protein.getDouble(\"quantity\"));\r\n                        String portion=Integer.toString(recipe.getInt(\"yield\"));\r\n                        String recipeName=recipe.getString(\"label\");\r\n                        JSONObject imgs=recipe.getJSONObject(\"images\");\r\n                        JSONObject thumbnail=imgs.getJSONObject(\"THUMBNAIL\");\r\n                        String imu=thumbnail.getString(\"url\");\r\n                        RecipeModelArrayList.add(new recipe_card_model(recipeName, imu,calories,portion,meal,fat_q,protein_q,recipeurl));\r\n                        //(String recipeName, String recipeImg, String calories, String serving, String mealType, String fat, String protein)\r\n                    }\r\n//                    System.out.println(\"calories = \"+calories);\r\n//                    System.out.println(\"Meal Type = \"+meal);\r\n//                    System.out.println(\"Recipe Name = \"+recipe.getString(\"label\"));\r\n//                    System.out.println(\"Servings = \"+portion);\r\n//                    System.out.println(\"Total Fats = \"+fat_q+\" grams\");\r\n//                    System.out.println(\"Total Protein = \"+protein_q+\" grams\");\r\n//                    System.out.println(\"recipeUrl = \"+recipeimg);\r\n//                    JSONObject rec = h.getJSONObject(0);\r\n//                    JSONObject recipe = rec.getJSONObject(\"recipe\");\r\n//                    JSONArray mealType = (JSONArray) recipe.get(\"mealType\");\r\n//                    meal = mealType.getString(0);\r\n//                    calorie=String.valueOf(recipe.getDouble(\"calories\"));\r\n//                    runOnUiThread(new Runnable() {\r\n//                        @Override\r\n//                        public void run() {\r\n//                            Toast.makeText(getApplicationContext(),\"Meal type \"+meal+\" Calories \"+calorie,Toast.LENGTH_LONG).show();\r\n//                        }\r\n//                    });\r\n\r\n                }\r\n\r\n            }\r\n            catch (Exception e)\r\n            {\r\n                e.printStackTrace();\r\n            }\r\n\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/ahmux/nutritionpoint/discoverRecipe.java b/app/src/main/java/ahmux/nutritionpoint/discoverRecipe.java
+--- a/app/src/main/java/ahmux/nutritionpoint/discoverRecipe.java	(revision 51861e7d7556e4de4aad8f73f74d6e28ceffa13b)
++++ b/app/src/main/java/ahmux/nutritionpoint/discoverRecipe.java	(date 1653146932145)
+@@ -39,21 +39,18 @@
+ 
+         Button button = findViewById(R.id.getdata);
+         RecipeModelArrayList = new ArrayList<>();
++
+         button.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 //Toast.makeText(getApplicationContext(),"Heyyyy",Toast.LENGTH_LONG).show();
+-                food=et.getText().toString();
++                food = et.getText().toString();
+                 new Fetch().start();
+-                et.getText().clear();
+-                recipeAdapter ra = new recipeAdapter(getApplicationContext(),RecipeModelArrayList);
++                recipeAdapter ra = new recipeAdapter(getApplicationContext(), RecipeModelArrayList);
+                 courseRV.setAdapter(ra);
+                 courseRV.setLayoutManager(new LinearLayoutManager(discoverRecipe.this));
+-
+             }
+         });
+-
+-
+     }
+     class Fetch extends Thread{
+         @Override
+@@ -77,45 +74,27 @@
+ 
+                     JSONObject jsonObject = new JSONObject(allStrings);
+                     JSONArray h = (JSONArray) jsonObject.get("hits");
++                    RecipeModelArrayList.clear();
+                     for(int i=0;i<h.length();i++) {
+-                        JSONObject rec=h.getJSONObject(i);
++                        JSONObject rec = h.getJSONObject(i);
+                         JSONObject recipe = rec.getJSONObject("recipe");
+-                        String calories=Double.toString(recipe.getDouble("calories"));
+-                        JSONArray mealType= (JSONArray) recipe.get("mealType");
+-                        String meal=mealType.getString(0);
+-                        String recipeurl =recipe.getString("url");
+-                        JSONObject totalNutrients=recipe.getJSONObject("totalNutrients");
+-                        JSONObject fat=totalNutrients.getJSONObject("FAT");
+-                        String fat_q= Double.toString(fat.getDouble("quantity"));
+-                        JSONObject protein=totalNutrients.getJSONObject("PROCNT");
+-                        String protein_q= Double.toString(protein.getDouble("quantity"));
+-                        String portion=Integer.toString(recipe.getInt("yield"));
+-                        String recipeName=recipe.getString("label");
+-                        JSONObject imgs=recipe.getJSONObject("images");
+-                        JSONObject thumbnail=imgs.getJSONObject("THUMBNAIL");
+-                        String imu=thumbnail.getString("url");
+-                        RecipeModelArrayList.add(new recipe_card_model(recipeName, imu,calories,portion,meal,fat_q,protein_q,recipeurl));
++                        String calories = Double.toString(recipe.getDouble("calories"));
++                        JSONArray mealType = (JSONArray) recipe.get("mealType");
++                        String meal = mealType.getString(0);
++                        String recipeurl = recipe.getString("url");
++                        JSONObject totalNutrients = recipe.getJSONObject("totalNutrients");
++                        JSONObject fat = totalNutrients.getJSONObject("FAT");
++                        String fat_q = Double.toString(fat.getDouble("quantity"));
++                        JSONObject protein = totalNutrients.getJSONObject("PROCNT");
++                        String protein_q = Double.toString(protein.getDouble("quantity"));
++                        String portion = Integer.toString(recipe.getInt("yield"));
++                        String recipeName = recipe.getString("label");
++                        JSONObject imgs = recipe.getJSONObject("images");
++                        JSONObject thumbnail = imgs.getJSONObject("THUMBNAIL");
++                        String imu = thumbnail.getString("url");
++                        RecipeModelArrayList.add(new recipe_card_model(recipeName, imu, calories, portion, meal, fat_q, protein_q, recipeurl));
+                         //(String recipeName, String recipeImg, String calories, String serving, String mealType, String fat, String protein)
+                     }
+-//                    System.out.println("calories = "+calories);
+-//                    System.out.println("Meal Type = "+meal);
+-//                    System.out.println("Recipe Name = "+recipe.getString("label"));
+-//                    System.out.println("Servings = "+portion);
+-//                    System.out.println("Total Fats = "+fat_q+" grams");
+-//                    System.out.println("Total Protein = "+protein_q+" grams");
+-//                    System.out.println("recipeUrl = "+recipeimg);
+-//                    JSONObject rec = h.getJSONObject(0);
+-//                    JSONObject recipe = rec.getJSONObject("recipe");
+-//                    JSONArray mealType = (JSONArray) recipe.get("mealType");
+-//                    meal = mealType.getString(0);
+-//                    calorie=String.valueOf(recipe.getDouble("calories"));
+-//                    runOnUiThread(new Runnable() {
+-//                        @Override
+-//                        public void run() {
+-//                            Toast.makeText(getApplicationContext(),"Meal type "+meal+" Calories "+calorie,Toast.LENGTH_LONG).show();
+-//                        }
+-//                    });
+-
+                 }
+ 
+             }
+Index: app/src/main/java/ahmux/nutritionpoint/recipeAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ahmux.nutritionpoint;\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.net.Uri;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\nimport androidx.annotation.NonNull;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.squareup.picasso.Picasso;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Viewholder> {\r\n\r\n    private Context context;\r\n    private ArrayList<recipe_card_model> cardModelArrayList;\r\n\r\n    // Constructor\r\n    public recipeAdapter(Context context,ArrayList<recipe_card_model> cardModelArrayList) {\r\n        this.context = context;\r\n        this.cardModelArrayList = cardModelArrayList;\r\n    }\r\n\r\n    @NonNull\r\n    @Override\r\n    public Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\r\n        // to inflate the layout for each item of recycler view.\r\n        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_card_layout, parent, false);\r\n        return new Viewholder(view);\r\n    }\r\n    @Override\r\n    public void onBindViewHolder(@NonNull Viewholder holder, int position) {\r\n        recipe_card_model model= cardModelArrayList.get(position);\r\n        holder.recipeName.setText(model.getRecipeName());\r\n        holder.calories.setText(model.getCalories());\r\n        holder.mealtype.setText(model.getMealType());\r\n        holder.servings.setText(model.getServing());\r\n        holder.fats.setText(model.getFat());\r\n        holder.protein.setText(model.getProtein());\r\n        // holder.recipeImage.setImageURI((URI)model.getRecipeImg());\r\n        Picasso.get().load((model.getRecipeImg())).into(holder.recipeImage);\r\n        holder.itemView.setOnClickListener(new View.OnClickListener()\r\n        {\r\n            @Override\r\n            public void onClick(View view) {\r\n                Uri uri= Uri.parse(model.getRecipeurl());\r\n                Intent intent= new Intent(Intent.ACTION_VIEW,uri);\r\n                view.getContext().startActivity(intent);\r\n            }\r\n        });\r\n    }\r\n\r\n\r\n\r\n    @Override\r\n    public int getItemCount() {\r\n        // this method is used for showing number\r\n        // of card items in recycler view.\r\n        return cardModelArrayList.size();\r\n    }\r\n\r\n    // View holder class for initializing of\r\n    // your views such as TextView and Imageview.\r\n    public class Viewholder extends RecyclerView.ViewHolder {\r\n        private ImageView recipeImage;\r\n        private TextView recipeName, calories,servings,fats,protein,mealtype;\r\n\r\n        public Viewholder(@NonNull View itemView) {\r\n            super(itemView);\r\n            recipeName = itemView.findViewById(R.id.RecipeName);\r\n            recipeImage = itemView.findViewById(R.id.RecipeImage);\r\n            calories = itemView.findViewById(R.id.calorie);\r\n            servings = itemView.findViewById(R.id.servings);\r\n            fats = itemView.findViewById(R.id.fats);\r\n            protein = itemView.findViewById(R.id.protein);\r\n            mealtype = itemView.findViewById(R.id.mealtype);\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/ahmux/nutritionpoint/recipeAdapter.java b/app/src/main/java/ahmux/nutritionpoint/recipeAdapter.java
+--- a/app/src/main/java/ahmux/nutritionpoint/recipeAdapter.java	(revision 51861e7d7556e4de4aad8f73f74d6e28ceffa13b)
++++ b/app/src/main/java/ahmux/nutritionpoint/recipeAdapter.java	(date 1652630959220)
+@@ -62,7 +62,11 @@
+         // of card items in recycler view.
+         return cardModelArrayList.size();
+     }
+-
++    public synchronized   void refreshAdapter(ArrayList<recipe_card_model> items) {
++        cardModelArrayList.clear();
++        cardModelArrayList.addAll(items);
++        notifyDataSetChanged();
++    }
+     // View holder class for initializing of
+     // your views such as TextView and Imageview.
+     public class Viewholder extends RecyclerView.ViewHolder {

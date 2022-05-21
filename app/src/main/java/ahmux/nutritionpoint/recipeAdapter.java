@@ -61,7 +61,11 @@ public class recipeAdapter extends RecyclerView.Adapter<recipeAdapter.Viewholder
         // of card items in recycler view.
         return cardModelArrayList.size();
     }
-
+    public synchronized   void refreshAdapter(ArrayList<recipe_card_model> items) {
+        cardModelArrayList.clear();
+        cardModelArrayList.addAll(items);
+        notifyDataSetChanged();
+    }
     // View holder class for initializing of
     // your views such as TextView and Imageview.
     public class Viewholder extends RecyclerView.ViewHolder {
