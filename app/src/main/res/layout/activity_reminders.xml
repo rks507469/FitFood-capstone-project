@@ -58,6 +58,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:text="4 HOUR"
+                        android:background="@drawable/rounded_button"
                         android:textColor="#FFCC00" />
 
                     <Button
@@ -67,6 +68,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_margin="3dp"
+                        android:background="@drawable/rounded_button"
                         android:layout_weight="1"
                         android:text="2 Hour" />
 
@@ -76,6 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
+                        android:background="@drawable/rounded_button"
                         android:layout_weight="1"
                         android:text="1 Hour" />
 
@@ -86,6 +89,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:background="@drawable/rounded_button"
                         android:text="30 MIN"
                         android:textColor="@android:color/white" />
 
@@ -95,6 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
+                        android:background="@drawable/rounded_button"
                         android:layout_weight="1"
                         android:text="15 MIN" />
                 </LinearLayout>

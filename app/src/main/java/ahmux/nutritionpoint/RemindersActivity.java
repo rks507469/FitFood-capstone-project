@@ -113,7 +113,7 @@ public class RemindersActivity extends AppCompatActivity implements View.OnClick
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             Intent intent = new Intent(this, AlarmReceiver.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), delay*60*1000, pendingIntent);
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 3*60*1000, pendingIntent);
             editor.putString("water_reminder", "true");
             Toast.makeText(this, "Water Reminder Started", Toast.LENGTH_SHORT).show();
         }
