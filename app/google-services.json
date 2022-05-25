@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1069067916760",
+    "project_id": "hopefav-ab00b",
+    "storage_bucket": "hopefav-ab00b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069067916760:android:1375de8268d3092ceccead",
+        "android_client_info": {
+          "package_name": "ahmux.nutritionpoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069067916760-4bspc2lbklm59p779me3kua9ea8304bu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAalAJegrQtmSAkuAPybIaXINR37qRx8v0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069067916760-4bspc2lbklm59p779me3kua9ea8304bu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
