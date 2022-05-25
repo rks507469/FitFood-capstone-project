@@ -20,6 +20,10 @@ public class recipe_card_model {
         this.protein = protein;
         this.recipeurl=recipeurl;
     }
+
+    public recipe_card_model() {
+    }
+
     public String getRecipeurl(){
         return recipeurl;
     }

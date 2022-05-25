@@ -47,6 +47,9 @@
         <activity
             android:name=".discoverRecipe"
             android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".favouriteList"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

@@ -245,7 +245,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(ApiIntent);
 
         } else if (id == R.id.nav_share) {
-
+            Intent s= new Intent(this,favouriteList.class);
+            startActivity(s);
         } else if (id == R.id.nav_facebook) {
             try {
                 Intent fbIntent = new Intent(Intent.ACTION_VIEW);
